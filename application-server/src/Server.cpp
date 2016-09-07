@@ -31,6 +31,9 @@ void Server::run(){
 	thread t_clientHandler(&Server::startClientHandler,this);
 	thread t_sharedServerHandler(&Server::startSharedServerHandler,this);
 
+	//todo SACAR. Es solo para que mustre algo. De hecho los metodos van a ser diferentes
+	sharedServerHandler->connectToUrl("http://jobify-professional.herokuapp.com/db", NULL, NULL);
+
 	while (running)
 	{//Coordinacion de client con shared
 

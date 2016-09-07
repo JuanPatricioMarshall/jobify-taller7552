@@ -7,6 +7,7 @@ using namespace std;
 
 #define OVER_KEY "exit"
 
+
 void isItOver(Server& server, mutex& condition_mutex){
 	string s;
 	while (s.compare(OVER_KEY) != 0) {
@@ -24,10 +25,11 @@ int main(){
 	mutex over_mutex;
 	thread over_thread(isItOver, ref(*server), ref(over_mutex));
 
+	//
 	if (server->isReady())
 		server->run();
 
 	over_thread.join();	
 	delete server;
-	return 0;
+
 }
