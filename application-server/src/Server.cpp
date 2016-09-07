@@ -36,7 +36,7 @@ void Server::run(){
 
 	while (running)
 	{//Coordinacion de client con shared
-
+		sleep(1);
 	}
 	
 
