@@ -1,13 +1,16 @@
 #include "ClientHandler.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 ClientHandler::ClientHandler(){
 	mg_mgr_init(&manager, NULL);
-    std::string port;
-	intToString(DEFAULT_PORT, port);
-	printf("Starting server on port %s\n", port);
+    string port = to_string(DEFAULT_PORT);
+	cout << "Starting server on port " << port;
 	connection = mg_bind(&manager, port.c_str(), eventHandler);
     if (connection == NULL){
-    	printf("Failed to create listener\n");
+    	cout <<"Failed to create listener\n";
     	running = false;
     }
     mg_set_protocol_http_websocket(connection);
@@ -19,7 +22,7 @@ ClientHandler::~ClientHandler() {
    mg_mgr_free(&manager);
 }
 
-ClientHandler::isRunning(){
+bool ClientHandler::isRunning(){
 	return ClientHandler::running;
 }
 
@@ -29,8 +32,8 @@ void ClientHandler::eventHandler(struct mg_connection* connection, int event, vo
 
 	switch (event) {
 		case MG_EV_HTTP_REQUEST:
-			mg_send_head(connection, 200, httpMsg.message.len, "Content-Type: text/plain");
-			mg_printf(connection, "%.*s", httpMsg.message.len, httpMsg.message.eventData);
+			mg_send_head(connection, 200, httpMsg->message.len, "Content-Type: text/plain");
+			mg_printf(connection, "%.*s", httpMsg->message.len, httpMsg->message.p);
 			break;
 		default:
 			break;

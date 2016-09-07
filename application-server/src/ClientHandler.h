@@ -19,8 +19,8 @@ class ClientHandler {
         void run();
     
     private:
-        static void handleEvent(struct mg_connection* connection, int event, void* eventData);
-        bool runnning;
+        static void eventHandler(struct mg_connection* connection, int event, void* eventData);
+        bool running;
         struct mg_mgr manager;
         struct mg_connection* connection;
 };

@@ -26,9 +26,9 @@ void Server::startSharedServerHandler(){
 }
 
 void Server::run(){
-	thread t_clientHandler(startClientHandler);
-	thread t_sharedServerHandler(startSharedServerHandler);
-
+	thread t_clientHandler(&Server::startClientHandler,this);
+	thread t_sharedServerHandler(&Server::startSharedServerHandler,this);
+	//Llega a hacer el join? ver SWAP
 	t_clientHandler.join();
 	t_sharedServerHandler.join();
 }

@@ -1,17 +1,18 @@
 #include "SharedServerHandler.h"
 
 SharedServerHandler::SharedServerHandler(){
-	//setear running
+	running = true;
 }
 
 SharedServerHandler::~SharedServerHandler() {
    mg_mgr_free(&manager);
 }
 
-SharedServerHandler::isRunning(){
+bool SharedServerHandler::isRunning(){
 	return SharedServerHandler::running;
 }
 
 void SharedServerHandler::run() {
-	while(running)
+	while(running){}
+
 }

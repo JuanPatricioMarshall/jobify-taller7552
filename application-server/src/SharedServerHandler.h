@@ -1,18 +1,20 @@
 #ifndef SHAREDSERVERHANDLER_H_
 #define SHAREDSERVERHANDLER_H_
 
-class Server {
-public:
-	Server();
+#include "../src/3rdparty/mongoose/mongoose.h"
 
-	virtual ~Server();
+class SharedServerHandler {
+public:
+	SharedServerHandler();
+
+	virtual ~SharedServerHandler();
 
     bool isRunning();
 
     void run();
 
 private:
-	bool runnning;
+	bool running;
     struct mg_mgr manager; //Se usa si va con Mongoose 
 };
 

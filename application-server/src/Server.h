@@ -8,11 +8,11 @@ class Server {
 public:
 	Server();
 
+	virtual ~Server();
+
 	bool isReady();
 
 	void run();
-
-	virtual ~Server();
 
 private:
 	ClientHandler* clientHandler;
