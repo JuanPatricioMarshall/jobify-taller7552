@@ -1,0 +1,1 @@
+/usr/bin/c++    -g -W -Wall -Wno-unused-function   CMakeFiles/Servidor.dir/main.cpp.o CMakeFiles/Servidor.dir/3rdparty/mongoose/mongoose.c.o CMakeFiles/Servidor.dir/Server.cpp.o CMakeFiles/Servidor.dir/ClientHandler.cpp.o CMakeFiles/Servidor.dir/SharedServerHandler.cpp.o  -o Servidor  -L/usr/local/lib -rdynamic -lssl -lcrypto -lpthread -Wl,-rpath,/usr/local/lib 

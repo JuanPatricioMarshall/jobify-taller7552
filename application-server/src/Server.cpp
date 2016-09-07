@@ -4,6 +4,7 @@
 using namespace std;
 
 Server::Server() {
+	running = false;
 	clientHandler = new ClientHandler();
 	sharedServerHandler = new SharedServerHandler();	
 }
@@ -26,9 +27,23 @@ void Server::startSharedServerHandler(){
 }
 
 void Server::run(){
+	running = true;
 	thread t_clientHandler(&Server::startClientHandler,this);
 	thread t_sharedServerHandler(&Server::startSharedServerHandler,this);
+
+	while (running)
+	{//Coordinacion de client con shared
+
+	}
+	
+
 	//Llega a hacer el join? ver SWAP
 	t_clientHandler.join();
 	t_sharedServerHandler.join();
+}
+
+void Server::stop(){
+	running = false;
+	clientHandler->stop();
+	sharedServerHandler->stop();
 }

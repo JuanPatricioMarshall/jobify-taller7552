@@ -16,3 +16,9 @@ void SharedServerHandler::run() {
 	while(running){}
 
 }
+
+void SharedServerHandler::stop(){
+	mtx.lock();
+	running = false;
+	mtx.unlock();
+}

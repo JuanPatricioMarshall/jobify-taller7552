@@ -7,7 +7,7 @@ using namespace std;
 ClientHandler::ClientHandler(){
 	mg_mgr_init(&manager, NULL);
     string port = to_string(DEFAULT_PORT);
-	cout << "Starting server on port " << port;
+	cout << "Starting server on port " << port <<"\n";
 	connection = mg_bind(&manager, port.c_str(), eventHandler);
     if (connection == NULL){
     	cout <<"Failed to create listener\n";
@@ -46,3 +46,8 @@ void ClientHandler::run() {
 		mg_mgr_poll(&manager, POLL_MILISECONDS);	
 }
 
+void ClientHandler::stop(){
+	mtx.lock();
+	running = false;
+	mtx.unlock();
+}

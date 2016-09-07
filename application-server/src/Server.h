@@ -14,7 +14,10 @@ public:
 
 	void run();
 
+	void stop();
+
 private:
+	bool running;
 	ClientHandler* clientHandler;
 	void startClientHandler();
 	SharedServerHandler* sharedServerHandler;
