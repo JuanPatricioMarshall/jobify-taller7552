@@ -15,7 +15,6 @@ SET(COMMON_SRCS ../src/3rdparty/mongoose/mongoose.c
 	../src/Server.cpp
 	../src/ClientHandler.cpp
 	../src/SharedServerHandler.cpp
-	../src/utils/Logger.cpp
 )
 SET (Servidor_SRCS ../src/main.cpp ${COMMON_SRCS})
 
