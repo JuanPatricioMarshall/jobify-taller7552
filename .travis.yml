@@ -22,4 +22,4 @@ before_script:
 #  - emulator -avd test -no-skin -no-audio -no-window &
 
 script:
-  - ./gradlew build --continue
+  - ./gradle build --continue
